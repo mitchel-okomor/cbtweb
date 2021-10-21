@@ -1,5 +1,7 @@
 import React, {Suspense} from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Router, useHistory } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store/store';
 import OpenRoutes from './routes/OpenRoutes'
 import ProtectedRoutes from './routes/ProtectedRoutes'
 import {publicRoutes, protectedRoutes} from './routes/routes'
@@ -7,6 +9,7 @@ import './App.css';
 
 
 function App() {
+	const history = useHistory()
 	const guestRoutes = publicRoutes.map((route, key) => {
 		return (
 		  <OpenRoutes
@@ -34,15 +37,16 @@ function App() {
   return (
     <div className="App">
 	<Suspense fallback={<div>Loading...</div>}>
+		<Router history={history} >
 	<Switch>
-        {/* <Provider store={store}>
-          <Header /> */}
+        <Provider store={store}>
+          {/* <Header /> */}
           {guestRoutes}
           {appRoutes}
           {/* <Footer /> */}
-        {/* </Provider> */}
+        </Provider>
       </Switch>
-
+</Router>
 	</Suspense>
     </div>
   );

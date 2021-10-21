@@ -1,5 +1,5 @@
 import React from 'react'
-import './index.css'
+import './Index.css'
 
 const Index: React.FC = (props:any)=> {	
 	return (
