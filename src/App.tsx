@@ -5,6 +5,7 @@ import store from './store/store';
 import OpenRoutes from './routes/OpenRoutes'
 import ProtectedRoutes from './routes/ProtectedRoutes'
 import {publicRoutes, protectedRoutes} from './routes/routes'
+import Header from './main/layout/header/index.lazy'
 import './App.css';
 
 
@@ -40,7 +41,8 @@ function App() {
 		<Router history={history} >
 	<Switch>
         <Provider store={store}>
-          {/* <Header /> */}
+          <Header /> 
+		  
           {guestRoutes}
           {appRoutes}
           {/* <Footer /> */}

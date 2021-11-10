@@ -1,0 +1,25 @@
+.quizcard {
+  width: 30vw;
+  min-height: 230px;
+  background-color: blue;
+  color: #fff;
+  border-radius: 15px;
+  padding: 1%;
+  display: grid;
+  grid-template-columns: 40% auto;
+}
+
+.quizcard ul {
+  list-style-type: none;
+}
+
+.quizcard ul > li {
+  border: #fff solid 2px;
+  margin: 10px 0 10px 0;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.quizcard span {
+  font-size: x-large;
+}

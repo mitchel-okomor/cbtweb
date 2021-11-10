@@ -1,13 +1,15 @@
 // eslint-disable-next-line no-empty-pattern
-import { AsyncThunk, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {REGISTER, LOGIN, FETCHUSER} from '../services/endpoints';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {REGISTER, LOGIN} from '../services/endpoints';
 import { cookieService } from '../services/authServices';
-import { setStorageItem, getStorageItem } from '../helpers/utilities';
+import { setStorageItem } from '../helpers/utilities';
 import { fetchData } from '../services/fetch';
+import {LoginUser, RegisterUser} from '../helpers/datatypes';
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (data, thunkAPI) => {
+  async (data:RegisterUser, thunkAPI) => {
+	  console.log("Reg: "+ REGISTER)
     try {
       let result = await fetchData(REGISTER, data, null, null);
 
@@ -22,7 +24,7 @@ export const register = createAsyncThunk(
   }
 );
 
-export const login = createAsyncThunk('auth/Login', async (data, thunkAPI) => {
+export const login = createAsyncThunk('auth/Login', async (data:LoginUser, thunkAPI) => {
   try {
     let result = await fetchData(LOGIN, data, null, null);
     if (result.status === 'success') {
@@ -122,12 +124,13 @@ export const authSlice = createSlice({
       state.isFetching = false;
       state.success = false;
       state.isError = false;
+	  state.errorMessage='';
+	  state.successMessage='';
       return state;
     },
 
     logoutUser: (state) => {
-      cookieService().removeToken('access_token');
-      cookieService().removeToken('expiresIn');
+   
       state.data = {};
       state.isFetching = false;
       state.success = false;
@@ -166,6 +169,8 @@ export const authSlice = createSlice({
       state.successMessage = payload.message;
       state.isFetching = false;
       state.isError = false;
+	  cookieService().setToken('access_token', payload.data.access_token);
+      cookieService().setToken('refresh_token', payload.data.refresh_token);
       return state;
     },
     [login.pending.type]: (state:any) => {

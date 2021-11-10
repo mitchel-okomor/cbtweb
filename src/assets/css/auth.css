@@ -1,0 +1,71 @@
+.appform {
+  background-color: inherit;
+  min-height: 100vh;
+}
+
+.appform input {
+  height: 3rem;
+  background-color: #ececec;
+}
+.appform button {
+  background-color: var(--secondary-color);
+  border: rgb(229, 226, 226) solid 0.01rem;
+  border-radius: 0.5rem;
+  height: 3rem;
+  width: 95%;
+  color: white;
+}
+.appform .input-group {
+  width: 100%;
+}
+.appform form {
+  width: 30rem;
+}
+.appform input {
+  border: none;
+  border-bottom: 1px solid var(--secondary-color);
+  border-radius: 0;
+  background-color: transparent;
+}
+.appform a {
+  color: black;
+}
+.appform a:visited {
+  color: black;
+}
+.appform a:hover {
+  color: black;
+}
+.appform .login {
+  background-color: #ececec;
+  height: 5rem;
+}
+.appform span {
+  color: red;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.appform .message {
+  font-size: x-large;
+}
+
+.appform a {
+  color: var(--light-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.appform .login-link {
+  color: var(--secondary-color);
+}

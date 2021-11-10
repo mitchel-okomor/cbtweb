@@ -1,0 +1,10 @@
+.navbar {
+}
+
+.navbar ul {
+  list-style-type: none;
+  color: #fff;
+}
+.navbar ul a:visited {
+  color: #fff;
+}

@@ -1,0 +1,21 @@
+.score {
+}
+
+.score .questions {
+  width: 50%;
+}
+
+.score .questions ul {
+  list-style-type: none;
+  padding: 20px 20px 0px 20px;
+}
+
+.score .questions ul > li {
+  border: rgb(212, 203, 203) solid 2px;
+  margin: 10px 0 10px 0;
+  padding: 5px;
+  border-radius: 10px;
+}
+.score .questions span {
+  font-size: x-large;
+}

@@ -14,7 +14,9 @@ type route = {
 }
 
 export const publicRoutes:Array<route> = [
-  { path: '/', exact: true, component: Home, name: 'Home' },
+  { path: '/', exact: true, component: Dashboard, name: 'Dashboard' },
+  { path: '/home', exact: true, component: Home, name: 'Home' },
+
   {
     path: '/register/:role',
     exact: true,
