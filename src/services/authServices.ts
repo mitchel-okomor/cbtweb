@@ -16,6 +16,13 @@ export const cookieService = () => {
     return cookies.get('access_token');
   };
 
+  
+  // Get Token
+  const getRefreshToken = () => {
+    return cookies.get('refresh_token');
+  };
+
+
   // Remove Token
   const removeToken = (key:string) => {
     cookies.remove(key);
@@ -24,6 +31,7 @@ export const cookieService = () => {
   // Export defined functions
   return {
     getToken: () => getToken(),
+	getRefreshToken: () => getRefreshToken(),
     setToken: (key:string, value:string) => setToken(key, value),
     removeToken: (key:string) => removeToken(key)
   };

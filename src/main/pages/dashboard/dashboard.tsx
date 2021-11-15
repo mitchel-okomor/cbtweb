@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Switch, Route, useHistory } from 'react-router';
 import './dashboard.css';
@@ -13,13 +14,14 @@ import {
   VideoCameraOutlined,
   UploadOutlined
 } from '@ant-design/icons';
-import { authSelector, logoutUser } from '../../../store/authSlice';
+import { authSelector, fetchUser } from '../../../store/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Index({ match }: any) {
   const { data } = useSelector(authSelector);
   const { user } = data;
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const { Header, Sider, Content } = Layout;
   const { SubMenu } = Menu;
@@ -31,13 +33,17 @@ function Index({ match }: any) {
     setCollapsed(collapsed);
   };
 
-  // State cleanup
   useEffect(() => {
-    if (!user) {
-      history.push('/login');
-    }
+    dispatch(fetchUser(''));
     document.title = 'Dashboard';
-  }, [user]);
+  }, []);
+
+  // State cleanup
+  //   useEffect(() => {
+  //     if (!user) {
+  //       history.push('/login');
+  //     }
+  //   }, [user]);
 
   return (
     // <div className='row dashboard'>
@@ -77,7 +83,7 @@ function Index({ match }: any) {
           )}
         </Header>
         <Content
-          className='site-layout-background'
+          className='site-layout-background content'
           style={{
             margin: '24px 16px',
             padding: 24,
@@ -86,13 +92,9 @@ function Index({ match }: any) {
         >
           <Switch>
             <Route path={'/account'} exact={true} component={() => <Quiz />} />
+            <Route path={'/quiz'} component={() => <Quiz />} />
             <Route
-              path={'/account/quiz'}
-              exact={true}
-              component={() => <Quiz />}
-            />
-            <Route
-              path={'/account/scoreboard'}
+              path={'/scoreboard'}
               exact={true}
               component={() => <ScoreBoard />}
             />

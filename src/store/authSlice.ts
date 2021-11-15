@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-empty-pattern
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {REGISTER, LOGIN} from '../services/endpoints';
+import {REGISTER, LOGIN, FETCHUSER} from '../services/endpoints';
 import { cookieService } from '../services/authServices';
 import { setStorageItem } from '../helpers/utilities';
 import { fetchData } from '../services/fetch';
@@ -40,6 +40,24 @@ export const login = createAsyncThunk('auth/Login', async (data:LoginUser, thunk
     return thunkAPI.rejectWithValue(e);
   }
 });
+
+export const fetchUser = createAsyncThunk(
+	'Auth/fetchUser',
+	async (thunkAPI:any) => {
+  
+	  try {
+		let result = await fetchData(FETCHUSER, null, null, null, true);
+  
+		if (result.status === 'success') {
+		  return { ...result };
+		} else {
+		  return thunkAPI.rejectWithValue(result);
+		}
+	  } catch (e) {
+		return thunkAPI.rejectWithValue(e);
+	  }
+	}
+  );
 
 // export const confirmEmail = createAsyncThunk(
 //   'auth/ConfirmEmail',
@@ -135,6 +153,7 @@ export const authSlice = createSlice({
       state.isFetching = false;
       state.success = false;
       state.isError = false;
+
       return state;
     }
   },
@@ -186,6 +205,29 @@ export const authSlice = createSlice({
         ? payload?.message
         : payload?.exception;
     },
+
+	[fetchUser.fulfilled.type]: (state, { payload }) => {
+		state.data = payload.data;
+  
+		state.success = true;
+		state.successMessage = payload.message;
+		state.isFetching = false;
+		state.isError = false;
+		return state;
+	  },
+	  [fetchUser.pending.type]: (state) => {
+		state.isFetching = true;
+	  },
+  
+	  [fetchUser.rejected.type]: (state, { payload }) => {
+		state.isFetching = false;
+		state.success = false;
+		state.isError = true;
+		state.successMessage = '';
+		state.errorMessage = payload?.message
+		  ? payload?.message
+		  : payload?.exception;
+	  },
 
     //confirm email
     // [confirmEmail.fulfilled]: (state, { payload }) => {

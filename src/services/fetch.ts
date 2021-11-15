@@ -3,14 +3,15 @@ import { cookieService } from './authServices';
 
 
 // Fetch
-export const fetchData = async (endpoint:string, data:any, method:any, contentType:any) => {
+export const fetchData = async (endpoint:string, data:any, method:any, contentType:any, refresh=false) => {
   const token = cookieService().getToken();
+  const refreshToken =  cookieService().getRefreshToken();
 
   const options: any = {
     method: method ? method : data ? 'POST' : 'GET',
     headers: {
       'Content-Type': contentType || 'application/json',
-      Authorization: token && token,
+      Authorization: refresh ? refreshToken : token && token,
       Accept: 'application/json'
     }
   };

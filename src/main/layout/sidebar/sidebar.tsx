@@ -32,7 +32,7 @@ function Index() {
     { title: 'score board', url: '/scoreboard', icon: <UserOutlined /> },
     { title: 'levels', url: '/dashboard', icon: <UserOutlined /> },
     { title: 'settings', url: '/settings', icon: <UserOutlined /> },
-    { title: 'logout', url: '/settings', icon: <UserOutlined /> }
+    { title: 'logout', url: '/login', icon: <UserOutlined /> }
   ];
 
   return (

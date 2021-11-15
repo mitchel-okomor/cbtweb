@@ -15,6 +15,13 @@ type route = {
 
 export const publicRoutes: Array<route> = [
   { path: '/', exact: true, component: Dashboard, name: 'Dashboard' },
+  { path: '/account', exact: true, component: Dashboard, name: 'Dashboard' },
+  { path: '/quiz', exact: true, component: Dashboard, name: 'Dashboard' },
+  { path: '/scoreboard', exact: true, component: Dashboard, name: 'Dashboard' },
+  { path: '/dashboard', exact: true, component: Dashboard, name: 'Dashboard' },
+  { path: '/history', exact: true, component: Dashboard, name: 'Dashboard' },
+  { path: '/levels', exact: true, component: Dashboard, name: 'Dashboard' },
+  { path: '/settings', exact: true, component: Dashboard, name: 'Dashboard' },
   { path: '/home', exact: true, component: Home, name: 'Home' },
 
   {

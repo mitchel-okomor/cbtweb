@@ -12,6 +12,8 @@ function App() {
   const { data } = useSelector(authSelector);
   const { user } = data;
 
+  console.log(user);
+
   const history = useHistory();
   const guestRoutes = publicRoutes.map((route, key) => {
     return (
