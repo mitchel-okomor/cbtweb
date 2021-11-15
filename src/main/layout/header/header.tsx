@@ -5,9 +5,7 @@ import './header.css';
 function Index() {
   return (
     <nav
-      className={`navbar d-flex align-items-between  sticky-top navbar-dark bg-primary px-4 ${
-        document.title.toLocaleLowerCase() === 'dashboard' && ' d-none'
-      }`}
+      className={`navbar d-flex align-items-between  sticky-top navbar-dark bg-primary px-4 `}
     >
       <a className='navbar-brand' href='/'>
         Logo

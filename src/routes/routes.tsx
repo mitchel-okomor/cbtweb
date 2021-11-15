@@ -4,16 +4,16 @@ import Login from '../main/pages/auth/login/Index.lazy';
 import Register from '../main/pages/auth/register/index.lazy';
 import ForgotPassword from '../main/pages/auth/forgotpassword/index.lazy';
 import ResetPassword from '../main/pages/auth/resetpassword/index.lazy';
-import Dashboard from '../main/pages/dashboard/index.lazy';
+import Dashboard from '../main/pages/dashboard/dashboard.lazy';
 
 type route = {
-	path:string,
-	exact:boolean,
-	component: React.FC
-	name:string
-}
+  path: string;
+  exact: boolean;
+  component: React.FC;
+  name: string;
+};
 
-export const publicRoutes:Array<route> = [
+export const publicRoutes: Array<route> = [
   { path: '/', exact: true, component: Dashboard, name: 'Dashboard' },
   { path: '/home', exact: true, component: Home, name: 'Home' },
 
@@ -41,10 +41,10 @@ export const publicRoutes:Array<route> = [
     exact: true,
     component: ResetPassword,
     name: 'ResetPassword'
-  },
-
-
+  }
 ];
 
 // Authenticated routes
-export const protectedRoutes:Array<route> = [{ path: '/account', component: Dashboard, exact:true, name:"Dashboard" }];
+export const protectedRoutes: Array<route> = [
+  { path: '/account', component: Dashboard, exact: true, name: 'Dashboard' }
+];

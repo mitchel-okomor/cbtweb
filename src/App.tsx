@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Switch, Router, useHistory } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store/store';
+import { authSelector } from './store/authSlice';
+import { useSelector } from 'react-redux';
 import OpenRoutes from './routes/OpenRoutes';
 import ProtectedRoutes from './routes/ProtectedRoutes';
 import { publicRoutes, protectedRoutes } from './routes/routes';
@@ -9,6 +9,9 @@ import Header from './main/layout/header/header.lazy';
 import './App.css';
 
 function App() {
+  const { data } = useSelector(authSelector);
+  const { user } = data;
+
   const history = useHistory();
   const guestRoutes = publicRoutes.map((route, key) => {
     return (
@@ -38,14 +41,15 @@ function App() {
     <div className='App'>
       <Suspense fallback={<div>Loading...</div>}>
         <Router history={history}>
-          <Switch>
-            <Provider store={store}>
-              <Header />
+          {!user && <Header />}
 
-              {guestRoutes}
-              {appRoutes}
-              {/* <Footer /> */}
-            </Provider>
+          <Switch>
+            {/* <Provider store={store}> */}
+
+            {guestRoutes}
+            {appRoutes}
+            {/* <Footer /> */}
+            {/* </Provider> */}
           </Switch>
         </Router>
       </Suspense>
