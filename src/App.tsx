@@ -1,20 +1,20 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Switch, Router, useHistory } from 'react-router-dom';
-import { authSelector } from './store/authSlice';
-import { useSelector } from 'react-redux';
+import { authSelector, fetchUser } from './store/authSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import OpenRoutes from './routes/OpenRoutes';
 import ProtectedRoutes from './routes/ProtectedRoutes';
 import { publicRoutes, protectedRoutes } from './routes/routes';
 import Header from './main/layout/header/header.lazy';
 import './App.css';
+import Loader from './main/components/Loader';
 
 function App() {
-  const { data } = useSelector(authSelector);
+  const { data, isFetching } = useSelector(authSelector);
   const { user } = data;
 
-  console.log(user);
-
   const history = useHistory();
+  const dispatch = useDispatch();
   const guestRoutes = publicRoutes.map((route, key) => {
     return (
       <OpenRoutes
@@ -39,22 +39,37 @@ function App() {
     );
   });
 
+  useEffect(() => {
+    dispatch(fetchUser(''));
+  }, []);
+
   return (
     <div className='App'>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Router history={history}>
-          {!user && <Header />}
+      {isFetching && <Loader />}
+      {!isFetching && (
+        <>
+          <Suspense
+            fallback={
+              <div style={{ display: 'grid', placeItems: 'center' }}>
+                <Loader />
+              </div>
+            }
+          >
+            <Router history={history}>
+              {!user && <Header />}
 
-          <Switch>
-            {/* <Provider store={store}> */}
+              <Switch>
+                {/* <Provider store={store}> */}
 
-            {guestRoutes}
-            {appRoutes}
-            {/* <Footer /> */}
-            {/* </Provider> */}
-          </Switch>
-        </Router>
-      </Suspense>
+                {guestRoutes}
+                {appRoutes}
+                {/* <Footer /> */}
+                {/* </Provider> */}
+              </Switch>
+            </Router>
+          </Suspense>
+        </>
+      )}
     </div>
   );
 }

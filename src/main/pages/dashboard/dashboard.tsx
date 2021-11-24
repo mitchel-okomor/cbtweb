@@ -14,6 +14,8 @@ import {
   VideoCameraOutlined,
   UploadOutlined
 } from '@ant-design/icons';
+import { Avatar, Image } from 'antd';
+
 import { authSelector, fetchUser } from '../../../store/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -34,7 +36,7 @@ function Index({ match }: any) {
   };
 
   useEffect(() => {
-    dispatch(fetchUser(''));
+    // dispatch(fetchUser(''));
     document.title = 'Dashboard';
   }, []);
 
@@ -73,14 +75,33 @@ function Index({ match }: any) {
     <Layout>
       <Sidebar />
       <Layout className='site-layout'>
-        <Header className='site-layout-background' style={{ padding: 0 }}>
+        <Header
+          className='site-layout-background'
+          style={{
+            padding: 0,
+            display: 'flex',
+            justifyContent: 'space-between'
+          }}
+        >
           {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined
-            // {
-            //   className: 'trigger',
-            //   onClick: toggle
-            // }
+            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+            {
+              className: 'trigger',
+              onClick: () => toggle
+            }
           )}
+
+          <div className='mr-4'>
+            {user?.firstname}
+            <Avatar
+              src={
+                <Image
+                  src='https://joeschmoe.io/api/v1/male/random'
+                  style={{ width: 32 }}
+                />
+              }
+            />
+          </div>
         </Header>
         <Content
           className='site-layout-background content'

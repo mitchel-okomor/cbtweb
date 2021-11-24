@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
-import './index.css';
+import './score.css';
 import {
   fetchQuestions,
   questionsSelector
 } from '../../../../store/dashboard/questions';
+import { useHistory } from 'react-router';
 
 interface Question {
   questionId: string;
@@ -17,7 +18,7 @@ function Index({ questions, score, restart }: any) {
     useSelector(questionsSelector);
   const dispatch = useDispatch();
 
-  console.log(questions);
+  const history = useHistory();
 
   useEffect(() => {
     document.title = 'Score';
@@ -48,7 +49,7 @@ ${
   option.id === item?.userAnswer?.id && option.isCorrect
     ? 'bg-success text-white'
     : option.id === item?.userAnswer?.id
-    ? 'bg-warning text-white'
+    ? 'bg-danger text-white'
     : ''
 }
                    `}
@@ -64,7 +65,10 @@ ${
       </div>
 
       <div>
-        <button className='btn btn-primary mt-4' onClick={restart}>
+        <button
+          className='btn btn-primary mt-4'
+          onClick={() => history.push('/quiz')}
+        >
           Restart
         </button>
       </div>

@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 function Loader() {
-	return (
-		<div className="spinner-border"></div>
-
-	)
+  return (
+    <div className='d-flex justify-content-center'>
+      {' '}
+      <div className='spinner-border'></div>
+    </div>
+  );
 }
 
-export default Loader
+export default Loader;

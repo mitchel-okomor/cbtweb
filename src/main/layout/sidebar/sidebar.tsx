@@ -62,7 +62,7 @@ function Index() {
           if (item.title === 'logout') {
             return (
               <Menu.Item
-                key={item.title}
+                key={item.title.toUpperCase()}
                 icon={item.icon}
                 onClick={() => dispatch(logoutUser())}
               >

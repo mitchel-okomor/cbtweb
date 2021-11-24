@@ -1,13 +1,13 @@
-import React, {lazy} from 'react'
+import React, { lazy } from 'react';
 
-const LazyIndex = lazy(() => import('./Index'));
+const LazyIndex = lazy(() => import('./score'));
 
-function Index(props:any) {
-	return (
-		<div>
-			<LazyIndex {...props} />
-		</div>
-	)
+function Index(props: any) {
+  return (
+    <div>
+      <LazyIndex {...props} />
+    </div>
+  );
 }
 
 export default Index;
