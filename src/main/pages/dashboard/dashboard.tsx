@@ -18,6 +18,7 @@ import { Avatar, Image } from 'antd';
 
 import { authSelector, fetchUser } from '../../../store/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import io from 'socket.io-client';
 
 function Index({ match }: any) {
   const { data } = useSelector(authSelector);
@@ -34,6 +35,22 @@ function Index({ match }: any) {
     console.log(collapsed);
     setCollapsed(collapsed);
   };
+
+  // client-side
+  const socket = io('http://localhost:5000');
+
+  //   socket.on('connect', () => {
+  //     console.log('starting socket');
+  //     console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+  //   });
+  //   socket.on('hello', (args) => {
+  //     console.log(args);
+  //   });
+
+  //   socket.on('disconnect', () => {
+  //     console.log('Socket disconnected');
+  //     console.log(socket.id); // undefined
+  //   });
 
   useEffect(() => {
     // dispatch(fetchUser(''));
@@ -92,6 +109,7 @@ function Index({ match }: any) {
           )}
 
           <div className='mr-4'>
+            {console.log(user)}
             {user?.firstname}
             <Avatar
               src={

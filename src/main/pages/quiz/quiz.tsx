@@ -109,10 +109,7 @@ function Index() {
               />
               {currentQuestion === questions.length - 1 && (
                 <div>
-                  <button
-                    className='btn btn-primary mt-4'
-                    onClick={handleSubmit}
-                  >
+                  <button className='btn quiz-btn mt-4' onClick={handleSubmit}>
                     Submit
                   </button>
                 </div>

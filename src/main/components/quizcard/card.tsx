@@ -50,13 +50,13 @@ function Index({
       </div>
       <div>
         <button
-          className='btn btn-primary mr-3'
+          className='btn quiz-btn m-1'
           onClick={() => setCurrentQuestion(prev())}
         >
           Prev
         </button>
         <button
-          className='btn btn-primary ml-3'
+          className='btn quiz-btn m-1'
           onClick={() => setCurrentQuestion(next())}
         >
           {' '}

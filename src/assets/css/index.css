@@ -10,3 +10,8 @@
   --secondary-color: #66b6f9;
   --light-color: #495161;
 }
+
+.quiz-btn {
+  background-color: var(--light-color);
+  color: white;
+}
