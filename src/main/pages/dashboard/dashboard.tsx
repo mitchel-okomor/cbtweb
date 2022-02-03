@@ -39,10 +39,9 @@ function Index({ match }: any) {
   // client-side
   const socket = io('http://localhost:5000');
 
-  //   socket.on('connect', () => {
-  //     console.log('starting socket');
-  //     console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-  //   });
+    socket.on('connect', () => {
+      console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+    });
   //   socket.on('hello', (args) => {
   //     console.log(args);
   //   });
