@@ -16,7 +16,7 @@ interface Question {
   questionId: string;
 }
 
-function Index() {
+const Index: React.FC = () => {
   const { data, isFetching, isError, success, errorMessage, successMessage } =
     useSelector(questionsSelector);
   const dispatch = useDispatch();
@@ -126,6 +126,6 @@ function Index() {
       )}
     </div>
   );
-}
+};
 
 export default Index;

@@ -1,22 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import './score.css';
-import {
-  fetchQuestions,
-  questionsSelector
-} from '../../../../store/dashboard/questions';
+// import {
+//   fetchQuestions,
+//   questionsSelector
+// } from '../../../../store/dashboard/questions';
 import { useHistory } from 'react-router';
+import { ScoreProps } from '../../../../types/types';
 
-interface Question {
-  questionId: string;
-}
-
-function Index({ questions, score, restart }: any) {
-  const { data, isFetching, isError, success, errorMessage, successMessage } =
-    useSelector(questionsSelector);
-  const dispatch = useDispatch();
+function Index({ questions, score, restart }: ScoreProps) {
+  //   const { data, isFetching, isError, success, errorMessage, successMessage } =
+  //     useSelector(questionsSelector);
+  //   const dispatch = useDispatch();
 
   const history = useHistory();
 

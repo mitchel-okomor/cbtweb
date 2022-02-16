@@ -12,7 +12,7 @@ import {
 import swalAlert from '../../../../utility/alert';
 import Loader from '../../../components/Loader';
 
-const Index: React.FC = (props: any) => {
+const Index: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { data, success, isFetching, isError, errorMessage, successMessage } =

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { CardProps } from '../../../types/types';
 import './index.css';
 
 function Index({
@@ -9,12 +10,12 @@ function Index({
   setCurrentQuestion,
   next,
   prev
-}: any) {
-  const setUserAnswer = (answer: any) => {
+}: CardProps) {
+  const setUserAnswer = (answer: string) => {
     setCurrentAnswer(answer);
   };
 
-  const [selected, setSelected] = useState<any>();
+  const [selected, setSelected] = useState<string>();
   //item.id === question?.userAnswer?.id  &&question?.userAnswer?.isCorrect && "bg-primary"
 
   return (

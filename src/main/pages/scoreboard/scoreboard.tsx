@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './scoreboard.css';
 
-function Index() {
+const Index: React.FC = () => {
   console.log('Scoreboard');
 
   // State cleanup
@@ -10,6 +10,6 @@ function Index() {
   }, []);
 
   return <div className='container'>scoreboard</div>;
-}
+};
 
 export default Index;
